@@ -5,7 +5,8 @@ export default function CartItem({item, value}) {
     const { removeItems, incrementItems, decrementItems, inputChange } = value;
 
   return (
-    <div id='cart-item' className='container-fluid text-center pb-2 pt-2'>
+      <div id='cart-item' className='container-fluid text-center pb-2 pt-2'>
+        
         <div className='row align-items-center'>
             <div className='col-10 mx-auto col-lg-2'>
                 <img 
@@ -51,7 +52,7 @@ export default function CartItem({item, value}) {
                         onChange={(event) => {
                             let ev = event.target.value
                             Number(ev)
-                            if (ev > 40 || ev < 1) { return false }
+                            if (ev > 40 || ev < 1) { return false}
                             inputChange(id, ev)
                         }}/>
                     <div className="input-group-append">

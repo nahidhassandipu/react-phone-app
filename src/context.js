@@ -149,7 +149,6 @@ class ProductProvider extends Component {
         removeItems: this.removeItems,
         incrementItems: this.incrementItems,
         decrementItems: this.decrementItems,
-
         inputChange: this.inputChange,
         clearCart: this.clearCart,
         openModal: this.openModal,

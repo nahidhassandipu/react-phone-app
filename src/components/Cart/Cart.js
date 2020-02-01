@@ -17,9 +17,9 @@ export default class Cart extends Component {
           
           {data => {
             const {cart} = data;
-
+                      
             return (
-              <React.Fragment>
+              <div onLoad={() => data.closeModal()}>
                 {cart.length > 0 && 
                   <React.Fragment>
                     <CartColumns />
@@ -28,7 +28,7 @@ export default class Cart extends Component {
                   </React.Fragment>  
                 }
                 {cart.length < 1 && <EmptyCart />}
-              </React.Fragment>
+              </div>
             )
             
           }}
