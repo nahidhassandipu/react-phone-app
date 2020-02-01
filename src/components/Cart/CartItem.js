@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CartItem({item, value}) {
     const {id, img, title, price, count, total} = item;
-    const { removeItems, incrementItems, decrementItems } = value;
+    const { removeItems, incrementItems, decrementItems, inputChange } = value;
 
   return (
     <div id='cart-item' className='container-fluid text-center pb-2 pt-2'>
@@ -33,12 +33,16 @@ export default function CartItem({item, value}) {
                         </button>
                     </div>
                     <input 
-                        type="text" 
+                        type="number" 
                         className="form-control text-center" 
                         aria-label="Recipient's username" 
                         aria-describedby="basic-addon2"
-                        style={{maxWidth: '60px'}}
-                        value={count}/>
+                        style={{maxWidth: '120px'}}
+                        value={count} 
+                        onChange={(event) => {
+                            let ev = event.target.value
+                            inputChange(id, ev)
+                        }}/>
                     <div className="input-group-append">
                         <button 
                             className="btn btn-outline-secondary" 

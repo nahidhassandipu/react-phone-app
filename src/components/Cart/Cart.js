@@ -16,7 +16,7 @@ export default class Cart extends Component {
         <ProductConsummer>
           
           {data => {
-            const {cart} = data
+            const {cart} = data;
 
             return (
               <React.Fragment>

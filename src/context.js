@@ -65,7 +65,18 @@ class ProductProvider extends Component {
       cart: remainCart,
     }, () => this.calculateTotal())
   }
-
+  inputChange = (id, val) => {
+    const tempCart = [...this.state.cart];
+    const targetProduct = this.getItem(id);
+    targetProduct.count = Number(val);
+    targetProduct.total = targetProduct.count * targetProduct.price;
+    const findItem = tempCart.find(item => item.id === targetProduct.id);
+    const index = tempCart[findItem.id];
+    tempCart[index] = tempCart[findItem];
+    this.setState({
+      cart: tempCart
+    }, () => this.calculateTotal())
+  }
   incrementItems = (id) => {
     const tempCart = [...this.state.cart];
     const targetProduct = this.getItem(id);
@@ -138,6 +149,8 @@ class ProductProvider extends Component {
         removeItems: this.removeItems,
         incrementItems: this.incrementItems,
         decrementItems: this.decrementItems,
+
+        inputChange: this.inputChange,
         clearCart: this.clearCart,
         openModal: this.openModal,
         closeModal: this.closeModal
