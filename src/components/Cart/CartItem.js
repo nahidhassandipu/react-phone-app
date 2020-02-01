@@ -34,6 +34,15 @@ export default function CartItem({item, value}) {
                     </div>
                     <input 
                         type="number" 
+                        pattern="[0-9]"
+                        onKeyDown={(event) => event.key === '.' ? event.preventDefault() : true} 
+                        onPaste={(event) => {
+                            let pasteData = event.clipboardData.getData('number'); 
+                            if(pasteData){pasteData.replace(/[^0-9]*/g,'');}
+                            else {
+                                event.preventDefault()
+                            } 
+                        }}
                         className="form-control text-center" 
                         aria-label="Recipient's username" 
                         aria-describedby="basic-addon2"
@@ -41,6 +50,8 @@ export default function CartItem({item, value}) {
                         value={count} 
                         onChange={(event) => {
                             let ev = event.target.value
+                            Number(ev)
+                            if (ev > 40 || ev < 1) { return false }
                             inputChange(id, ev)
                         }}/>
                     <div className="input-group-append">
